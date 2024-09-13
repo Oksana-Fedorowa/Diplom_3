@@ -19,3 +19,5 @@ class FeedPageLocators:
     TODAY_COUNTER = By.XPATH, '//*[text()="Выполнено за сегодня:"]/following::p'#счетчик выполнено за сегодня
 
     IN_PROGRESS_LIST = By.XPATH, '//*[contains(@class, "orderListReady")]/child::li[@class="text text_type_digits-default mb-2"]'#в работе
+
+    MODAL_OVERLAY = By.XPATH, '//*[contains(@class,  "Modal_modal__loading")]/following::div[@class="Modal_modal_overlay__x2ZCr"]'  # модально окно мешающее

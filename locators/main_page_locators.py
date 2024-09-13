@@ -4,11 +4,11 @@ class MainPageLocators:
 
     BUTTON_ACCOUNT = By.XPATH, '//*[text()="Личный Кабинет"]'#Кнпка Личный кабинет
 
-    #BUTTON_ACCOUNT = By.XPATH, "//a[@href='/account']"
+
 
     BUTTON_CONSTRUCTOR = By.XPATH, '//*[text()="Конструктор"]'#кнопка конструктор
 
-    #BUTTON_ORDERS_FEED = By.XPATH, '//*[text()="Лента Заказов"]' #лента заказов
+
     BUTTON_ORDERS_FEED = (By.XPATH, "//a[@href='/feed']")
 
     BURGER_CONSTRUCTOR_TITLE = By.XPATH, '//*[text()="Соберите бургер"]'#заголовок соберите бургер

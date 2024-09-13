@@ -2,10 +2,21 @@ import allure
 from data import Data
 from page_objects.main_page import MainPage
 from page_objects.feed_page import FeedPage
-from page_objects.account_page import AccountPage
+from page_objects.password_recovery_page import PasswordRecoveryPage
+
 
 
 class TestMainPage:
+
+    @allure.title('Тест: Перход на страницу логина по клику на "Личный кабинет"')
+    def test_click_login_button(self, driver):
+        main_page = MainPage(driver)
+        main_page.open_main_page()
+        main_page.click_on_account_button()
+        p_r_page = PasswordRecoveryPage(driver)
+        assert p_r_page.find_login_button()
+
+
     @allure.title('Тест: Переход по клику "Конструктор"')
     def test_constructor_button(self, driver):
         main_page = MainPage(driver)
@@ -48,7 +59,7 @@ class TestMainPage:
 
     @allure.title('Тест: Авторизованный пользователь может сделать заказ')
     def test_authorised_user_can_make_order(self, driver, registered_user):
-        account_page = AccountPage(driver)
-        account_page.login_into_account(registered_user)
+        p_r_page = PasswordRecoveryPage(driver)
+        p_r_page.login_into_account(registered_user)
         main_page = MainPage(driver)
         assert main_page.find_make_order_button()

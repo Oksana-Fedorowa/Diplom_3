@@ -1,5 +1,5 @@
 
-import time
+
 from data import Data
 from page_objects.base_page import BasePage
 from locators.main_page_locators import MainPageLocators
@@ -82,6 +82,5 @@ class MainPage(BasePage):
 
     @allure.step('Получаем информацию от счётчика ингредиента')
     def receive_ingredient_counter_text(self):
-        time.sleep(2)
         return self.get_text_from_element(MainPageLocators.INGREDIENT_COUNTER)[0]
 

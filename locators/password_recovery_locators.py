@@ -1,10 +1,9 @@
 from selenium.webdriver.common.by import By
 
 class PasswordRecoveryLocators:
-    INPUT_EMAIL = By.XPATH, '//label[text()="Email"]/following::input' # Поле ввода email
+    INPUT_EMAIL = By.XPATH, '//label[text()="Email"]/following::input'  # Поле ввода email
 
     INPUT_PASSWORD = By.XPATH, '//label[text()="Пароль"]/following::input'  # Поле ввода пароля
-
     BUTTON_RESTORE_PASS = By.XPATH, '//*[text()="Восстановить пароль"]' # Кнопка "Восстановить пароль" на экране входа
 
     INPUT_CODE = By.XPATH, '//*[text()="Введите код из письма"]' #поле ввода кода
@@ -16,6 +15,9 @@ class PasswordRecoveryLocators:
     ACTIVE_INPUT_PASSWORD = By.XPATH, '//*[contains (@class, "placeholder-focused") and text()="Пароль"]' #поле пароля в восстановление
 
     BUTTON_LOGIN = By.XPATH, '//*[text()="Войти"]'  # кнопка войти
+
+    MODAL_OVERLAY = By.XPATH, '//*[contains(@class,  "Modal_modal__loading")]/following::div[@class="Modal_modal_overlay__x2ZCr"]'  # модально окно мешающее
+
 
 
 
