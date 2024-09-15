@@ -16,7 +16,7 @@ class PasswordRecoveryLocators:
 
     BUTTON_LOGIN = By.XPATH, '//*[text()="Войти"]'  # кнопка войти
 
-    MODAL_OVERLAY = By.XPATH, '//*[contains(@class,  "Modal_modal__loading")]/following::div[@class="Modal_modal_overlay__x2ZCr"]'  # модально окно мешающее
+
 
 
 

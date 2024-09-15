@@ -12,6 +12,7 @@ class TestMainPage:
     def test_click_login_button(self, driver):
         main_page = MainPage(driver)
         main_page.open_main_page()
+        main_page.wait_for_modal_to_disappear()
         main_page.click_on_account_button()
         p_r_page = PasswordRecoveryPage(driver)
         assert p_r_page.find_login_button()
@@ -22,6 +23,7 @@ class TestMainPage:
         main_page = MainPage(driver)
         main_page.open_url(Data.LOGIN_URL)
         main_page.find_burger_constructor_button()
+        main_page.wait_for_modal_to_disappear()
         main_page.click_on_constructor_button()
         assert main_page.find_burger_constructor_title()
 
@@ -29,6 +31,7 @@ class TestMainPage:
     def test_orders_feed_button(self, driver):
         main_page = MainPage(driver)
         main_page.open_main_page()
+        main_page.wait_for_modal_to_disappear()
         main_page.click_on_orders_feed_button()
         feed_page = FeedPage(driver)
         assert feed_page.find_feed_title()
@@ -37,6 +40,7 @@ class TestMainPage:
     def test_modal_after_clicking_ingredient(self, driver):
         main_page = MainPage(driver)
         main_page.open_main_page()
+        main_page.wait_for_modal_to_disappear()
         main_page.click_on_ingredient()
         assert main_page.find_ingredient_modal()
 
@@ -44,6 +48,7 @@ class TestMainPage:
     def test_modal_closure_by_clicking_x(self, driver):
         main_page = MainPage(driver)
         main_page.open_main_page()
+        main_page.wait_for_modal_to_disappear()
         main_page.click_on_ingredient()
         main_page.close_ingredients_modal()
         assert main_page.find_is_ingredient_clickable()
@@ -60,6 +65,7 @@ class TestMainPage:
     @allure.title('Тест: Авторизованный пользователь может сделать заказ')
     def test_authorised_user_can_make_order(self, driver, registered_user):
         p_r_page = PasswordRecoveryPage(driver)
-        p_r_page.login_into_account(registered_user)
         main_page = MainPage(driver)
+        main_page.wait_for_modal_to_disappear()
+        p_r_page.login_into_account(registered_user)
         assert main_page.find_make_order_button()

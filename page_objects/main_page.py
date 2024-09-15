@@ -1,5 +1,7 @@
 
-
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support import expected_conditions
 from data import Data
 from page_objects.base_page import BasePage
 from locators.main_page_locators import MainPageLocators
@@ -7,10 +9,18 @@ import allure
 
 class MainPage(BasePage):
 
+    @allure.step("Ожидание, пока модальное окно не исчезнет")
+    def wait_for_modal_to_disappear(self):
+        try:
+            WebDriverWait(self.driver, 20).until_not(
+                expected_conditions.visibility_of_element_located(MainPageLocators.MODAL_OVERLAY)
+            )
+        except TimeoutException:
+            raise TimeoutException("Модальное окно не исчезло в течение 20 секунд")
+
     @allure.step('Создаём заказ')
     def make_order(self):
         self.drag_and_drop_element(MainPageLocators.INGREDIENT, MainPageLocators.PLACE_FOR_INGREDIENT)
-        self.wait_for_modal_to_disappear(MainPageLocators.MODAL_OVERLAY)
         self.click_on_element(MainPageLocators.BUTTON_MAKE_ORDER)
         self.press_esc()
 
@@ -20,7 +30,6 @@ class MainPage(BasePage):
 
     @allure.step('Клик по кнопке "Личный кабинет"')
     def click_on_account_button(self):
-        self.wait_for_modal_to_disappear(MainPageLocators.MODAL_OVERLAY)
         self.click_on_element(MainPageLocators.BUTTON_ACCOUNT)
 
 
@@ -36,7 +45,6 @@ class MainPage(BasePage):
 
     @allure.step('Клик по кнопке "Конструктор"')
     def click_on_constructor_button(self):
-        self.wait_for_modal_to_disappear(MainPageLocators.MODAL_OVERLAY)
         self.click_on_element(MainPageLocators.BUTTON_CONSTRUCTOR)
 
 
@@ -48,7 +56,6 @@ class MainPage(BasePage):
 
     @allure.step('Клик по кнопке "Лента заказов"')
     def click_on_orders_feed_button(self):
-        self.wait_for_modal_to_disappear(MainPageLocators.MODAL_OVERLAY)
         self.click_on_element(MainPageLocators.BUTTON_ORDERS_FEED)
 
 
@@ -59,7 +66,6 @@ class MainPage(BasePage):
 
     @allure.step('Клик по ингредиенту')
     def click_on_ingredient(self):
-        self.wait_for_modal_to_disappear(MainPageLocators.MODAL_OVERLAY)
         self.click_on_element(MainPageLocators.INGREDIENT)
 
     @allure.step('Проверяем кликабельность ингредиента')

@@ -1,7 +1,6 @@
 
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver import ActionChains, Keys
 import allure
 
@@ -17,18 +16,6 @@ class BasePage:
     def find_element_with_wait(self, locator):
         WebDriverWait(self.driver, 20).until(expected_conditions.visibility_of_element_located(locator))
         return self.driver.find_element(*locator)
-
-
-    @allure.step("Ожидание, пока модальное окно не исчезнет")
-    def wait_for_modal_to_disappear(self, locator, timeout=20):
-        try:
-            # Используем until_not для ожидания, пока элемент не станет невидимым
-            WebDriverWait(self.driver, timeout).until_not(
-                expected_conditions.visibility_of_element_located(locator)
-            )
-        except TimeoutException:
-            print(f"Модальное окно не исчезло в течение {timeout} секунд")
-            raise TimeoutException(f"Модальное окно с локатором {locator} не исчезло в течение {timeout} секунд")
 
 
 

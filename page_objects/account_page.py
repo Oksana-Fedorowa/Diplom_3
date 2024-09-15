@@ -5,9 +5,9 @@ import allure
 
 
 class AccountPage(BasePage):
+
     @allure.step('Клик по кнопке "История заказов"')
     def click_on_orders_history_button(self):
-        self.wait_for_modal_to_disappear(AccountPageLocators.MODAL_OVERLAY)
         self.click_on_element(AccountPageLocators.BUTTON_ORDERS_HISTORY)
 
     @allure.step('Находим блок с историей заказов')
@@ -17,7 +17,6 @@ class AccountPage(BasePage):
 
     @allure.step('Клик по кнопке "Выход"')
     def click_on_logout_button(self):
-        self.wait_for_modal_to_disappear(AccountPageLocators.MODAL_OVERLAY)
         self.click_on_element(AccountPageLocators.BUTTON_LOGOUT)
 
 

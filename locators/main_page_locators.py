@@ -25,7 +25,7 @@ class MainPageLocators:
 
     BUTTON_MAKE_ORDER = By.XPATH, '//*[text()="Оформить заказ"]'#кнопка оформить заказ
 
-    MODAL_OVERLAY = By.XPATH,'//*[contains(@class,  "Modal_modal__loading")]/following::div[@class="Modal_modal_overlay__x2ZCr"]'#модально окно мешающее
+    MODAL_OVERLAY = By.XPATH, '//*[contains(@class,  "Modal_modal__loading")]/following::div[@class="Modal_modal_overlay__x2ZCr"]'  # модально окно мешающее
 
 
 

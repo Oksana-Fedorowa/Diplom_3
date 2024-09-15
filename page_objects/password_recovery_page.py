@@ -12,7 +12,6 @@ class PasswordRecoveryPage(BasePage):
     @allure.step('Входим в аккаунт')
     def login_into_account(self, payload):
         self.open_url(Data.LOGIN_URL)
-        self.wait_for_modal_to_disappear(PasswordRecoveryLocators.MODAL_OVERLAY)
         self.text_input_to_element(PasswordRecoveryLocators.INPUT_EMAIL, payload["email"])
         self.text_input_to_element(PasswordRecoveryLocators.INPUT_PASSWORD, payload["password"])
         self.click_on_element(PasswordRecoveryLocators.BUTTON_LOGIN)
@@ -21,7 +20,6 @@ class PasswordRecoveryPage(BasePage):
     @allure.step('Кликает по кнопке "Восстановить пароль"')
     def click_on_restore_pass_button(self):
         self.scroll_to_element(PasswordRecoveryLocators.BUTTON_RESTORE_PASS)
-        self.wait_for_modal_to_disappear(PasswordRecoveryLocators.MODAL_OVERLAY)
         self.click_on_element(PasswordRecoveryLocators.BUTTON_RESTORE_PASS)
 
     @allure.step('Вводит электронный адрес пользователя')
@@ -47,12 +45,10 @@ class PasswordRecoveryPage(BasePage):
 
     @allure.step('Кликает по кнопке "Восстановить"')
     def click_on_restore_button(self):
-        self.wait_for_modal_to_disappear(PasswordRecoveryLocators.MODAL_OVERLAY)
         self.click_on_element(PasswordRecoveryLocators.BUTTON_RESTORE)
 
     @allure.step('Клик иконки скрывающей пароль')
     def click_on_see_pass_button(self):
-        self.wait_for_modal_to_disappear(PasswordRecoveryLocators.MODAL_OVERLAY)
         self.click_on_element(PasswordRecoveryLocators.BUTTON_SEE_PASS)
 
     @allure.step('Проверяет, что поле ввода пароля активно')
